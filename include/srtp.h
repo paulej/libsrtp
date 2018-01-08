@@ -627,6 +627,18 @@ srtp_err_status_t srtp_add_stream(srtp_t session, const srtp_policy_t *policy);
 srtp_err_status_t srtp_remove_stream(srtp_t session, unsigned int ssrc);
 
 /**
+ * @brief srtp_get_stream_count() will return a count of the number of
+ * SRTP streams.
+ *
+ * This function will return a count of the number of distinct SRTP streams,
+ * as identified by SSRC value, that have been added to the list of streams.
+ *
+ * @param session is the SRTP session for which the to count streams.
+ *
+ */
+unsigned srtp_get_stream_count(srtp_t session);
+
+/**
  * @brief srtp_update() udpates all streams in the session.
  *
  * The function call srtp_update(session, policy) updates

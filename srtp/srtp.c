@@ -2836,6 +2836,26 @@ srtp_stream_ctx_t *srtp_get_stream(srtp_t srtp, uint32_t ssrc)
     return NULL;
 }
 
+/*
+ * srtp_get_stream_count() returns a count of the number of SRTP streams that
+ * that are being tracked for the specified SRTP session.
+ *
+ */
+unsigned srtp_get_stream_count(srtp_t srtp)
+{
+    srtp_stream_ctx_t *stream;
+    unsigned count = 0;
+
+    /* walk the list of streams */
+    stream = srtp->stream_list;
+    while (stream != NULL) {
+        count++;
+        stream = stream->next;
+    }
+
+    return count;
+}
+
 srtp_err_status_t srtp_dealloc(srtp_t session)
 {
     srtp_stream_ctx_t *stream;
